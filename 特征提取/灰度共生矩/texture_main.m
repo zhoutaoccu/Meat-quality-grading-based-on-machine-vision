@@ -1,0 +1,12 @@
+I=imread('rank1.jpg');
+Texture(I)
+I=imread('rank2.jpg');
+Texture(I)
+I=imread('rank3.jpg');
+Texture(I)
+I=imread('rank4.jpg');
+Texture(I)
+I=imread('rank5.jpg');
+Texture(I)
+I=imread('rank6.jpg');
+Texture(I)

@@ -1,0 +1,47 @@
+close all;
+clc;
+
+%n=input('Enter the number of Picture:');
+P = 'F:\MYSPACE\CHUROU\Project\sample_photo\';
+D = dir([P 'rank*.jpg']);
+for i = 1 : length(D)
+a = imread([P D(i).name]);
+imb=a;
+%ima=noise(a,10);
+
+%imb=NLmeansfilter(ima,5,2,sigma);
+
+imc=Divide_Tsallis_1D(imb)
+imwrite(imc,['F:\MYSPACE\CHUROU\Project\divide_photo\','r' num2str(i) '.jpg']); %title(['Tsallis Entropy T=', num2str(bestT)]);%输出为ri.jpg
+
+
+
+
+
+%b=rgb2gray(a);level=graythresh(b);%获取灰度图片的阈值
+%c=im2bw(b,level);imshow(c); %显示后再保存图片，大小发生变化
+%print -djpeg 2;
+
+end
+
+P = 'F:\MYSPACE\CHUROU\Project\divide_photo\';
+D = dir([P 'r*.jpg']);
+for i = 1 : length(D)
+b = imread([P D(i).name]);
+
+% figure;
+% imread('F:\MYSPACE\CHUROU\Project\divide_photo\r1.jpg')
+m=Shape(b);
+n=Texture(b);
+matrix_row=[m n];
+if i
+temp=matrix_row;
+if i>1
+   matrix=temp;
+   matrix=[matrix;matrix_row];
+end
+
+
+end
+label=[1:length(D)]';
+save svm.mat label matrix
